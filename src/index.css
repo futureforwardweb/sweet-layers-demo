@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 50% 98%;
+    --foreground: 20 25% 20%;
+
+    --card: 30 40% 97%;
+    --card-foreground: 20 25% 20%;
+
+    --popover: 30 50% 98%;
+    --popover-foreground: 20 25% 20%;
+
+    --primary: 350 60% 72%;
+    --primary-foreground: 30 50% 98%;
+
+    --secondary: 30 30% 94%;
+    --secondary-foreground: 20 25% 25%;
+
+    --muted: 30 20% 92%;
+    --muted-foreground: 20 15% 45%;
+
+    --accent: 350 45% 85%;
+    --accent-foreground: 20 25% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 25% 88%;
+    --input: 30 25% 88%;
+    --ring: 350 60% 72%;
+
+    --radius: 0.75rem;
+
+    /* Custom bakery tokens */
+    --cream: 35 45% 96%;
+    --blush: 350 60% 92%;
+    --rose: 350 60% 72%;
+    --rose-dark: 350 55% 62%;
+    --warm-brown: 20 25% 20%;
+    --soft-pink: 350 65% 88%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--cream)) 0%, hsl(var(--blush)) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(var(--rose)) 0%, hsl(var(--rose-dark)) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(var(--cream)) 0%, hsl(var(--background)) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(var(--rose) / 0.15);
+    --shadow-card: 0 8px 30px -8px hsl(var(--warm-brown) / 0.1);
+    --shadow-elevated: 0 20px 50px -15px hsl(var(--warm-brown) / 0.15);
+
+    /* Fonts */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Work Sans', system-ui, sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 20 20% 10%;
+    --foreground: 30 30% 95%;
+    --card: 20 20% 12%;
+    --card-foreground: 30 30% 95%;
+    --popover: 20 20% 10%;
+    --popover-foreground: 30 30% 95%;
+    --primary: 350 55% 65%;
+    --primary-foreground: 20 20% 10%;
+    --secondary: 20 15% 18%;
+    --secondary-foreground: 30 30% 95%;
+    --muted: 20 15% 20%;
+    --muted-foreground: 30 20% 60%;
+    --accent: 350 40% 25%;
+    --accent-foreground: 30 30% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 20 15% 20%;
+    --input: 20 15% 20%;
+    --ring: 350 55% 65%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-cta);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium 
+           transition-all duration-300 ease-out
+           hover:shadow-elevated hover:scale-105 hover:bg-rose-dark
+           active:scale-100;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-out
+           hover:shadow-elevated hover:-translate-y-2;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-cta {
+    background: var(--gradient-cta);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
