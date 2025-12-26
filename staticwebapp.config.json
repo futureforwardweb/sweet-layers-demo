@@ -1,0 +1,50 @@
+{
+  "routes": [
+    {
+      "route": "/assets/*.js",
+      "headers": {
+        "content-type": "text/javascript; charset=utf-8"
+      }
+    },
+    {
+      "route": "/assets/*.css",
+      "headers": {
+        "content-type": "text/css; charset=utf-8"
+      }
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/assets/*"]
+  },
+  "platform": {
+    "apiRuntime": "node:18"
+  },
+  "mimeTypes": {
+    ".js": "text/javascript; charset=utf-8",
+    ".mjs": "text/javascript; charset=utf-8",
+    ".json": "application/json",
+    ".css": "text/css; charset=utf-8",
+    ".svg": "image/svg+xml",
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".gif": "image/gif",
+    ".ico": "image/x-icon",
+    ".woff": "font/woff",
+    ".woff2": "font/woff2",
+    ".ttf": "font/ttf",
+    ".eot": "application/vnd.ms-fontobject"
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Content-Security-Policy": "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://ozwidjnzqzrneocslmpo.supabase.co; img-src 'self' data: https:; font-src 'self' data:;"
+  },
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/index.html",
+      "statusCode": 200
+    }
+  }
+}
